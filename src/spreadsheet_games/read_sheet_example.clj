@@ -13,12 +13,13 @@
 
 (read-sheet sample)
 
-(macroexpand '(->> (load-workbook loc)
-                   (select-sheet "Worksheet" ,,,)
-                   row-seq
-                   (remove nil?)
-                   (map cell-seq)
-                   (map #(map read-cell %))))
+;; I'm trying to figure out threading macros
+(macroexpand '(->> (load-workbook loc)                      ;; Get a workbook thing
+                   (select-sheet "Worksheet" ,,,)           ;; Select Worksheet from it
+                   row-seq  ,,,                             ;; Iterate the rows
+                   (remove nil? ,,,)                        ;; Remove nil rows
+                   (map cell-seq ,,,)                       ;; Creat a cell sequence
+                   (map #(map read-cell %) ,,,)))
 
 ;;
 ;; (map

@@ -1,6 +1,6 @@
 # spreadsheet-games
 
-FIXME: description
+Some stuff from jacobian.org for spreadsheets.
 
 ## Installation
 
