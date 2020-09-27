@@ -42,5 +42,18 @@
 ;; re-match works against the whole string
 (deftest try-re-matches (testing
                           (is false? (re-matches #"foo" "food"))
-                          (is "foo" (re-matches #"foo" "foo"))
-                          ))
+                          (is (= "foo" (re-matches #"foo" "foo")))))
+
+;; re-seq creates a sequence of matches
+;; this is how people are defining test inputs, etc.
+(deftest try-re-seq (testing "trying advanced technique"
+                       (let [
+                             ;; given
+                             a-string "My Favorite Things"
+
+                             ;; when
+                             result (re-seq #"\w+" a-string)]
+
+                         ;; then
+                         (is (= result '("My" "Favorite" "Things"))))))
+
