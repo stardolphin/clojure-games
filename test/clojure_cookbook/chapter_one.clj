@@ -47,13 +47,46 @@
 ;; re-seq creates a sequence of matches
 ;; this is how people are defining test inputs, etc.
 (deftest try-re-seq (testing "trying advanced technique"
-                       (let [
-                             ;; given
-                             a-string "My Favorite Things"
+                      (let [
+                            ;; given
+                            a-string "My Favorite Things"
 
-                             ;; when
-                             result (re-seq #"\w+" a-string)]
+                            ;; when
+                            result (re-seq #"\w+" a-string)]
 
-                         ;; then
-                         (is (= result '("My" "Favorite" "Things"))))))
+                        ;; then
+                        (is (= result '("My" "Favorite" "Things"))))))
 
+(deftest try-string-replace (testing "trying string replace"
+                              (let [
+                                    ;; given
+                                    a-string "Cats are fun"
+
+                                    ;; when
+                                    result (clojure.string/replace a-string "Cats" "Dogs")
+
+                                    ;; then
+                                    is-same? (= result "Dogs are fun")]
+                                (is is-same?))))
+
+(deftest try-string-split (testing "trying string split without limit"
+                            (let [
+                                  ;; given
+                                  a-string "Dogs,Are,Fun"
+                                  ;; when
+                                  result (clojure.string/split #"," a-string)
+                                  ]
+                              (is (= result '("Dogs" "Are" "Fun"))))))
+
+;(use 'inflections.core)
+;(def the-monkey (inflections.core/pluralize 1 "monkey"))
+
+(deftest try-symbol-names (testing "Giving some name symbol conversions"
+                            (is (= "valid" (str (symbol "valid"))))
+                            (is (= "triumph" (name "triumph")))
+                            (is (= :triumph (keyword "triumph")))
+                            ))
+
+(deftest try-big-number-mult (testing "trying multiply with large nums"
+                               (let [big-num (*' 9999 9999 9999 9999 9999 9999)]
+                                 (is (> big-num 999999)))))

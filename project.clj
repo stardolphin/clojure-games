@@ -8,6 +8,7 @@
                  [org.clojure/java.jdbc "0.7.11"]
                  [org.postgresql/postgresql "42.2.14"]
                  [talltale "0.4.3"]
+                 [inflections "0.13.2"]
                  ]
   :main ^:skip-aot spreadsheet-games.core
   :target-path "target/%s"
